@@ -26,7 +26,6 @@ export const HomeComponent: React.FC = () => {
             className="max-w-[450px] object-contain drop-shadow-lg rounded-xl"
           />
         </div>
-
       </div>
     </div>
   );
