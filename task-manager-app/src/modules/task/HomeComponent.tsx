@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import homeImg from '../../images/home_img.jpg';
 
 export const HomeComponent: React.FC = () => {
   return (
@@ -20,13 +21,9 @@ export const HomeComponent: React.FC = () => {
         
         <div className="w-2/3 flex justify-center pl-16 ">
           <img 
-            src="images/home_img.jpg" 
-            alt="Стікери" 
-            className="max-w-[450px] object-contain "
-            onError={(e) => {
-              e.currentTarget.src = 'https://cdn-icons-png.flaticon.com/512/2996/2996118.png';
-              e.currentTarget.className = "max-w-[300px] opacity-70";
-            }}
+            src={homeImg} 
+            alt="Стікери Kanban-desk" 
+            className="max-w-[450px] object-contain drop-shadow-lg rounded-xl"
           />
         </div>
 
