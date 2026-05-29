@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1",
+    "title": "Зробити звіт",
+    "description": "Стислий виклад результатів",
+    "status": "До виконання",
+    "priority": "High",
+    "dueDate": "2026-05-30",
+    "hasReminder": true
+  }
+]
