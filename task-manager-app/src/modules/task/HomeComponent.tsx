@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import homeImg from '../../images/home_img.jpg';
+import homeImg from '../../../images/home_img.jpg';
 
 export const HomeComponent: React.FC = () => {
   return (
