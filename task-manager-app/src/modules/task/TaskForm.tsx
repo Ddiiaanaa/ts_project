@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { type Task } from '../../types/Task';
 
 interface TaskFormProps {
-  initialData?: Task | null; 
+  initialData?: Task | null;
   onClose: () => void;
   onSave: (task: Task) => void;
 }
@@ -13,19 +13,22 @@ export const TaskForm: React.FC<TaskFormProps> = ({ initialData, onClose, onSave
   const [dueDate, setDueDate] = useState('');
   const [priority, setPriority] = useState<'Low' | 'Medium' | 'High'>('Medium');
   const [hasReminder, setHasReminder] = useState(true);
+  
+  // Ось цей стан викликав помилку:
   const [reminderDays, setReminderDays] = useState('');
 
   useEffect(() => {
     if (initialData) {
-      setTitle(initialData.title);
-      setDescription(initialData.description);
-      setDueDate(initialData.dueDate);
-      setPriority(initialData.priority);
-      setHasReminder(initialData.hasReminder);
+      setTitle(initialData.title || '');
+      setDescription(initialData.description || '');
+      setDueDate(initialData.dueDate || '');
+      setPriority(initialData.priority || 'Medium');
+      setHasReminder(initialData.hasReminder ?? true);
+      setReminderDays(initialData.reminderDays || '');
     }
   }, [initialData]);
 
-const handleSave = () => {
+  const handleSave = () => {
     if (!title.trim()) return alert('Введіть назву завдання');
     
     const task: Task = {
@@ -36,8 +39,8 @@ const handleSave = () => {
       priority,
       dueDate,
       hasReminder,
-      reminderDays, 
-      createdAt: initialData?.createdAt || new Date().toLocaleDateString('uk-UA'), // Зберігаємо дату створення
+      reminderDays,
+      createdAt: initialData?.createdAt || new Date().toLocaleDateString('uk-UA'),
     };
     onSave(task);
     onClose();
@@ -83,6 +86,22 @@ const handleSave = () => {
               <div className="flex-1 flex gap-4">
                 <button onClick={() => setHasReminder(true)} className={`bg-white px-4 py-1 text-sm text-gray-700 shadow-sm ${hasReminder ? 'ring-2 ring-[#6b9db1]' : ''}`}>Так</button>
                 <button onClick={() => setHasReminder(false)} className={`bg-white px-5 py-1 text-sm text-gray-700 shadow-sm ${!hasReminder ? 'ring-2 ring-[#6b9db1]' : ''}`}>Ні</button>
+              </div>
+            </div>
+            <div className="flex items-center justify-between mt-6">
+              <label className={`text-sm w-1/2 ${hasReminder ? 'text-gray-800' : 'text-gray-400'}`}>Частота<br/>нагадування:</label>
+              <div className={`flex-1 flex items-center gap-3 ${hasReminder ? 'text-gray-700' : 'text-gray-400'}`}>
+                <span>Кожні</span>
+                {/* ТУТ БУЛА ПОМИЛКА: Не вистачало onChange={...} */}
+                <input 
+                  type="number" 
+                  min="1" 
+                  disabled={!hasReminder} 
+                  value={reminderDays} 
+                  onChange={(e) => setReminderDays(e.target.value)} 
+                  className="w-10 h-8 px-2 outline-none text-center bg-white disabled:bg-transparent disabled:border disabled:border-gray-300" 
+                />
+                <span>дні</span>
               </div>
             </div>
           </div>
