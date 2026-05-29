@@ -47,7 +47,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ initialData, onClose, onSave
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-white flex justify-center items-center z-50">
       <div className="bg-[#e4f0f5] p-8 w-[600px] shadow-lg relative">
         <h2 className="text-center text-[#82aec1] text-xl font-medium mb-6">
           {initialData ? 'Редагування завдання' : 'Створення завдання'}
