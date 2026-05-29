@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
-import { Bell, User, BookOpen } from 'lucide-react';
+import { HashRouter, Routes, Route, Link, Navigate } from 'react-router-dom';import { Bell, User, BookOpen } from 'lucide-react';
 import { BoardComponent } from './modules/task/BoardComponent';
 import { HomeComponent } from './modules/task/HomeComponent';
 import { CreateBoardComponent } from './modules/task/CreateBoardComponent';
@@ -87,7 +86,7 @@ const AppHeader: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="min-h-screen flex flex-col font-sans bg-white border border-gray-300">
         <AppHeader />
 
@@ -111,7 +110,7 @@ const App: React.FC = () => {
           <span className="text-white font-medium text-sm tracking-widest uppercase">Kanban-desk</span>
         </footer>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
