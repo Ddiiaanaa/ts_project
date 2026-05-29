@@ -23,7 +23,7 @@ export const HomeComponent: React.FC = () => {
           <img 
             src={homeImg} 
             alt="Стікери Kanban-desk" 
-            className="max-w-[450px] object-contain drop-shadow-lg rounded-xl"
+            className="max-w-[450px] object-contain"
           />
         </div>
       </div>
